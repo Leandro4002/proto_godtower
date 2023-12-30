@@ -1,12 +1,11 @@
 use bevy::prelude::*;
 use bevy_ecs_ldtk::prelude::*;
-use bevy_rapier2d::prelude::*;
 use crate::AppState;
 use self::systems::*;
 
-mod systems;
-mod components;
-mod bundles;
+pub mod systems;
+pub mod components;
+pub mod bundles;
 
 pub struct SimulationPlugin;
 

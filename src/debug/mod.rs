@@ -2,7 +2,7 @@ use self::system::*;
 use bevy::{diagnostic::FrameTimeDiagnosticsPlugin, prelude::*};
 use bevy_inspector_egui::quick::WorldInspectorPlugin;
 
-mod system;
+pub mod system;
 
 pub struct DebugPlugin;
 
@@ -10,6 +10,10 @@ impl Plugin for DebugPlugin {
     fn build(&self, app: &mut App) {
         app.insert_resource(DebugConfig::default())
             .add_plugins(FrameTimeDiagnosticsPlugin)
+            .add_plugins(bevy_rapier2d::render::RapierDebugRenderPlugin {
+                enabled: true,
+                ..default()
+            })
             .add_systems(Update, (inputs, debug_window, update_info_values));
 
         #[cfg(debug_assertions)]
@@ -32,5 +36,4 @@ pub struct DebugConfig {
     fps: f64,
     /// At wich rate the diagnostics info are updated
     update_timer: Timer,
-    pub draw_hitboxes: bool,
 }

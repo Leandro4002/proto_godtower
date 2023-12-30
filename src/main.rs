@@ -5,10 +5,11 @@ use bevy::{
     window::{EnabledButtons, PresentMode, PrimaryWindow, WindowMode},
 };
 use bevy_ecs_ldtk::prelude::*;
+use bevy_egui::EguiPlugin;
 use bevy_rapier2d::prelude::*;
 use main_menu::MainMenuPlugin;
 use simulation::SimulationPlugin;
-//use debug::DebugPlugin;
+use debug::DebugPlugin;
 
 mod debug;
 mod main_menu;
@@ -39,6 +40,9 @@ fn main() {
                 .set(ImagePlugin::default_nearest()),
         ))
         .insert_resource(Volume(7))
+        // Egui
+        .add_plugins(EguiPlugin)
+        .add_plugins(bevy_inspector_egui::DefaultInspectorConfigPlugin) // adds default options and `InspectorEguiImpl`s
         // LDtk
         .add_plugins((LdtkPlugin, RapierPhysicsPlugin::<NoUserData>::pixels_per_meter(100.0),))
         .insert_resource(RapierConfiguration {
@@ -54,7 +58,7 @@ fn main() {
             ..Default::default()
         })
         // Custom
-        .add_plugins((MainMenuPlugin, SimulationPlugin/*, DebugPlugin*/)) // DebugPlugin crashes the program
+        .add_plugins((MainMenuPlugin, SimulationPlugin, DebugPlugin))
         .add_state::<AppState>()
         .add_systems(Startup, setup)
         .add_systems(Update, fullscreen)

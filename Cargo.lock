@@ -404,9 +404,9 @@ dependencies = [
 
 [[package]]
 name = "bevy-inspector-egui"
-version = "0.21.0"
+version = "0.22.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "d65b98d6fca1209c36c4d403c377f303aad22d940281fe1a9e431217516f0622"
+checksum = "27abfb302456a6688b4d6264847e59e0538dc3f42b139f5eb0b307bceeecc9da"
 dependencies = [
  "bevy-inspector-egui-derive",
  "bevy_app 0.12.1",
@@ -414,16 +414,17 @@ dependencies = [
  "bevy_core 0.12.1",
  "bevy_core_pipeline 0.12.1",
  "bevy_ecs 0.12.1",
- "bevy_egui 0.23.0",
+ "bevy_egui",
  "bevy_hierarchy 0.12.1",
  "bevy_log 0.12.1",
  "bevy_math 0.12.1",
  "bevy_pbr 0.12.1",
  "bevy_reflect 0.12.1",
  "bevy_render 0.12.1",
+ "bevy_time 0.12.1",
  "bevy_utils 0.12.1",
  "bevy_window 0.12.1",
- "egui 0.23.0",
+ "egui",
  "image",
  "once_cell",
  "pretty-type-name",
@@ -432,9 +433,9 @@ dependencies = [
 
 [[package]]
 name = "bevy-inspector-egui-derive"
-version = "0.21.0"
+version = "0.22.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "ec800b7cf98151b5dbff80f0eb6dffcb4bcfceef6e457888b395ead4eb7e75ba"
+checksum = "5ec77479f56958ed1b2802c3129ebc704d12245627b2d4dae61f11e6ed5c21b1"
 dependencies = [
  "proc-macro2",
  "quote",
@@ -855,26 +856,13 @@ dependencies = [
 
 [[package]]
 name = "bevy_egui"
-version = "0.23.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "85450af551b7e1cb766f710763b60a12a82ffd6323945a8f776c6334c59ccdc1"
-dependencies = [
- "arboard",
- "bevy 0.12.1",
- "egui 0.23.0",
- "thread_local",
- "webbrowser",
-]
-
-[[package]]
-name = "bevy_egui"
 version = "0.24.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "c90c01202dbcebc03315a01ea71553b35e1f20b0da6b1cc8c2605344032a3d96"
 dependencies = [
  "arboard",
  "bevy 0.12.1",
- "egui 0.24.1",
+ "egui",
  "thread_local",
  "webbrowser",
 ]
@@ -2449,15 +2437,6 @@ checksum = "9ea835d29036a4087793836fa931b08837ad5e957da9e23886b29586fb9b6650"
 
 [[package]]
 name = "ecolor"
-version = "0.23.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "cfdf4e52dbbb615cfd30cf5a5265335c217b5fd8d669593cea74a517d9c605af"
-dependencies = [
- "bytemuck",
-]
-
-[[package]]
-name = "ecolor"
 version = "0.24.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "4b7637fc2e74d17e52931bac90ff4fc061ac776ada9c7fa272f24cdca5991972"
@@ -2467,23 +2446,12 @@ dependencies = [
 
 [[package]]
 name = "egui"
-version = "0.23.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "8bd69fed5fcf4fbb8225b24e80ea6193b61e17a625db105ef0c4d71dde6eb8b7"
-dependencies = [
- "ahash 0.8.6",
- "epaint 0.23.0",
- "nohash-hasher",
-]
-
-[[package]]
-name = "egui"
 version = "0.24.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "c55bcb864b764eb889515a38b8924757657a250738ad15126637ee2df291ee6b"
 dependencies = [
  "ahash 0.8.6",
- "epaint 0.24.1",
+ "epaint",
  "nohash-hasher",
 ]
 
@@ -2492,15 +2460,6 @@ name = "either"
 version = "1.9.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "a26ae43d7bcc3b814de94796a5e736d4029efb0ee900c12e2d54c993ad1a1e07"
-
-[[package]]
-name = "emath"
-version = "0.23.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "1ef2b29de53074e575c18b694167ccbe6e5191f7b25fe65175a0d905a32eeec0"
-dependencies = [
- "bytemuck",
-]
 
 [[package]]
 name = "emath"
@@ -2587,21 +2546,6 @@ dependencies = [
 
 [[package]]
 name = "epaint"
-version = "0.23.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "58067b840d009143934d91d8dcb8ded054d8301d7c11a517ace0a99bb1e1595e"
-dependencies = [
- "ab_glyph",
- "ahash 0.8.6",
- "bytemuck",
- "ecolor 0.23.0",
- "emath 0.23.0",
- "nohash-hasher",
- "parking_lot",
-]
-
-[[package]]
-name = "epaint"
 version = "0.24.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "7d1b9e000d21bab9b535ce78f9f7745be28b3f777f6c7223936561c5c7fefab8"
@@ -2609,8 +2553,8 @@ dependencies = [
  "ab_glyph",
  "ahash 0.8.6",
  "bytemuck",
- "ecolor 0.24.1",
- "emath 0.24.1",
+ "ecolor",
+ "emath",
  "nohash-hasher",
  "parking_lot",
 ]
@@ -4361,7 +4305,7 @@ dependencies = [
  "bevy-inspector-egui",
  "bevy_aseprite",
  "bevy_ecs_ldtk",
- "bevy_egui 0.24.0",
+ "bevy_egui",
  "bevy_rapier2d",
  "bevy_stat_bars",
  "image",
