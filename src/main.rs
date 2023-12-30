@@ -5,6 +5,7 @@ use bevy::{
     window::{EnabledButtons, PresentMode, PrimaryWindow, WindowMode},
 };
 use bevy_ecs_ldtk::prelude::*;
+use bevy_rapier2d::prelude::*;
 use main_menu::MainMenuPlugin;
 use simulation::SimulationPlugin;
 //use debug::DebugPlugin;
@@ -38,7 +39,21 @@ fn main() {
                 .set(ImagePlugin::default_nearest()),
         ))
         .insert_resource(Volume(7))
-        .add_plugins(LdtkPlugin)
+        // LDtk
+        .add_plugins((LdtkPlugin, RapierPhysicsPlugin::<NoUserData>::pixels_per_meter(100.0),))
+        .insert_resource(RapierConfiguration {
+            gravity: Vec2::new(0.0, -2000.0),
+            ..Default::default()
+        })
+        .insert_resource(LevelSelection::Uid(0))
+        .insert_resource(LdtkSettings {
+            level_spawn_behavior: LevelSpawnBehavior::UseWorldTranslation {
+                load_level_neighbors: true,
+            },
+            set_clear_color: SetClearColor::FromLevelBackground,
+            ..Default::default()
+        })
+        // Custom
         .add_plugins((MainMenuPlugin, SimulationPlugin/*, DebugPlugin*/)) // DebugPlugin crashes the program
         .add_state::<AppState>()
         .add_systems(Startup, setup)
@@ -59,11 +74,6 @@ fn fullscreen(keys: Res<Input<KeyCode>>, mut q_windows: Query<&mut Window, With<
 
 fn setup(mut commands: Commands, asset_server: Res<AssetServer>) {
     commands.spawn((Camera2dBundle::default(), MainCamera));
-
-    commands.spawn(LdtkWorldBundle {
-        ldtk_handle: asset_server.load("levels/parkour.ldtk"),
-        ..Default::default()
-    });
 }
 
 #[derive(Component)]

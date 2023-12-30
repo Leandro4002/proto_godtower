@@ -1,3 +1,4 @@
+/*
 use bevy::prelude::*;
 
 use super::components::Player;
@@ -20,3 +21,4 @@ impl PlayerBundle {
         }
     }
 }
+*/
